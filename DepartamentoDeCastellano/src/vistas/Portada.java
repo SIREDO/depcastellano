@@ -1,6 +1,8 @@
 package vistas;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -8,11 +10,14 @@ import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+
 import java.awt.Toolkit;
+
+import javax.swing.JLayeredPane;
 
 public class Portada extends JFrame {
 
-	private JPanel contentPane;
+	private JPanel contenedor;
 
 	/**
 	 * Launch the application.
@@ -35,6 +40,9 @@ public class Portada extends JFrame {
 		JMenu profesores = new JMenu("Profesores");
 		menuBar.add(profesores);
 		
+		JMenuItem profes = new JMenuItem("Profesorado");
+		profesores.add(profes);
+		
 		JMenu materiales = new JMenu("Materiales");
 		menuBar.add(materiales);
 		
@@ -52,9 +60,22 @@ public class Portada extends JFrame {
 		
 		JMenuItem modifPrestamo = new JMenuItem("Anular o finalizar pr\u00E9stamo");
 		prestamos.add(modifPrestamo);
+		
+		contenedor=new JPanel();
+		getContentPane().add(contenedor);
+		contenedor.setBounds(0, 23, 800, 600);
+		contenedor.setLayout(new CardLayout(0, 0));
+		/*JPanel panel1=new PerfilUsuario (contenedor;
+		JPanel panel2=new PerfilEquipo (contenedor);
+		JPanel panel3=new Comprobacion(contenedor);
+		contenedor.add(panel1,"perfilUsuario");
+		contenedor.add(panel2,"perfilEquipo");
+		contenedor.add(panel3,"comprobacion");
+		
+		/*
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		contentPane.setLayout(null);*/
 	}
 }
