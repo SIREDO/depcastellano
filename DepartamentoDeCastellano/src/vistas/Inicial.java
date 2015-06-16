@@ -15,7 +15,7 @@ import java.util.Iterator;
 import modelo.DatosProfesores;
 import javax.swing.JComboBox;
 
-public class Profesores extends JPanel {
+public class Inicial extends JPanel {
 
 	private JLabel lbMiembros, fondo;
 	
@@ -23,23 +23,11 @@ public class Profesores extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public Profesores() {
+	public Inicial() {
 		setLayout(null);
 		
-		lbMiembros = new JLabel("Miembros del Departamento");
-		lbMiembros.setFont(new Font("Calibri", Font.BOLD, 26));
-		lbMiembros.setBounds(94, 174, 320, 42);
-		add(lbMiembros);
-		
-		JComboBox boxProfes = new JComboBox();
-		boxProfes.setFont(new Font("Calibri", Font.BOLD, 24));
-		boxProfes.setBounds(94, 240, 260, 36);
-		add(boxProfes);
-		
-		
-		
-		fondo = new JLabel("");
-		fondo.setIcon(new ImageIcon(Profesores.class.getResource("/imagenes/fondoliso.png")));
+			fondo = new JLabel("");
+		fondo.setIcon(new ImageIcon(Inicial.class.getResource("/imagenes/fondoDept.png")));
 		fondo.setBounds(0, 0, 800, 600);
 		this.add(fondo);
 		
