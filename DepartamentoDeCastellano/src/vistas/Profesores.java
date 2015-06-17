@@ -18,6 +18,7 @@ import javax.swing.JComboBox;
 public class Profesores extends JPanel {
 
 	private JLabel lbMiembros, fondo;
+	private JComboBox boxProfes;
 	
 	private DatosProfesores profLista= new DatosProfesores();
 	/**
@@ -31,7 +32,12 @@ public class Profesores extends JPanel {
 		lbMiembros.setBounds(94, 174, 320, 42);
 		add(lbMiembros);
 		
-		JComboBox boxProfes = new JComboBox();
+		boxProfes = new JComboBox();
+		boxProfes.setMaximumRowCount(2);
+		Iterator<String> recorredor=profLista.getProfesores().iterator();
+		while (recorredor.hasNext()){
+			boxProfes.addItem(recorredor.next().toString()); 
+		}
 		boxProfes.setFont(new Font("Calibri", Font.BOLD, 24));
 		boxProfes.setBounds(94, 240, 260, 36);
 		add(boxProfes);

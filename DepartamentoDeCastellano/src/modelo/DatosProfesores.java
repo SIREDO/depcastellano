@@ -11,7 +11,8 @@ import java.sql.Statement;
 public class DatosProfesores {
 	
 	//SQL
-	private static String PROFESORES="SELECT nombre FROM profesores";
+	private static String PROFESORES="SELECT nombre, apellidos FROM profesores";
+	//private static String APELLIDOS="SELECT apellidos FROM profesores";
 	//	
 	private Connection conexion=null;
 	private Statement sql = null;
@@ -33,7 +34,7 @@ public class DatosProfesores {
 			//Recorremos los resultados y los almacenamos en un ArrayList
 			
 			while( resultados.next() ) {
-				profesores.add(resultados.getString("nombre"));
+				profesores.add(resultados.getString("nombre")+" "+resultados.getString("apellidos"));
 			}
 			
 		}catch( SQLException excepcionSql ) {
