@@ -14,6 +14,7 @@ import java.util.Iterator;
 
 import modelo.DatosProfesores;
 import javax.swing.JComboBox;
+import javax.swing.SwingConstants;
 
 public class Inicial extends JPanel {
 
@@ -25,9 +26,20 @@ public class Inicial extends JPanel {
 	 */
 	public Inicial() {
 		setLayout(null);
+			
+			JLabel lbltitulo = new JLabel("Departamento de Lengua ");
+			lbltitulo.setFont(new Font("Tempus Sans ITC", Font.BOLD, 40));
+			lbltitulo.setBounds(44, 217, 474, 60);
+			add(lbltitulo);
+			
+			JLabel lblTitulo2 = new JLabel("castellana y Literatura");
+			lblTitulo2.setHorizontalAlignment(SwingConstants.RIGHT);
+			lblTitulo2.setFont(new Font("Tempus Sans ITC", Font.BOLD, 40));
+			lblTitulo2.setBounds(54, 275, 451, 60);
+			add(lblTitulo2);
 		
 			fondo = new JLabel("");
-		fondo.setIcon(new ImageIcon(Inicial.class.getResource("/imagenes/fondoDept.png")));
+		fondo.setIcon(new ImageIcon(Inicial.class.getResource("/imagenes/fondoliso.png")));
 		fondo.setBounds(0, 0, 800, 600);
 		this.add(fondo);
 		

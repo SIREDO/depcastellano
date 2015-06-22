@@ -14,6 +14,7 @@ import java.util.Iterator;
 
 import modelo.DatosProfesores;
 import javax.swing.JComboBox;
+import java.awt.SystemColor;
 
 public class Profesores extends JPanel {
 
@@ -25,11 +26,12 @@ public class Profesores extends JPanel {
 	 * Create the panel.
 	 */
 	public Profesores() {
+		setBackground(SystemColor.textHighlightText);
 		setLayout(null);
 		
 		lbMiembros = new JLabel("Miembros del Departamento");
-		lbMiembros.setFont(new Font("Calibri", Font.BOLD, 26));
-		lbMiembros.setBounds(94, 174, 320, 42);
+		lbMiembros.setFont(new Font("Tempus Sans ITC", Font.BOLD, 26));
+		lbMiembros.setBounds(57, 187, 340, 42);
 		add(lbMiembros);
 		
 		boxProfes = new JComboBox();
@@ -45,8 +47,8 @@ public class Profesores extends JPanel {
 		
 		
 		fondo = new JLabel("");
-		fondo.setIcon(new ImageIcon(Profesores.class.getResource("/imagenes/fondoliso.png")));
-		fondo.setBounds(0, 0, 800, 600);
+		fondo.setIcon(new ImageIcon(Profesores.class.getResource("/imagenes/prestamo.png")));
+		fondo.setBounds(352, 110, 459, 504);
 		this.add(fondo);
 		
 

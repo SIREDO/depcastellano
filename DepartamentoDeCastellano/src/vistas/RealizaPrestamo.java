@@ -1,79 +1,121 @@
 package vistas;
 
 import javax.swing.JPanel;
-import java.awt.BorderLayout;
 import javax.swing.JComboBox;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridLayout;
 import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.ImageIcon;
-import java.awt.Color;
-import com.toedter.calendar.JDateChooser;
-import com.toedter.components.JSpinField;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
-import javax.swing.JButton;
 
+import java.awt.Font;
+
+import javax.swing.ImageIcon;
+
+import java.awt.Color;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.Iterator;
+
+import com.toedter.calendar.JDateChooser;
+import com.jgoodies.forms.factories.DefaultComponentFactory;
+
+import javax.swing.JButton;
+import javax.swing.border.LineBorder;
+import javax.swing.SwingConstants;
+
+import java.awt.SystemColor;
+import java.util.Iterator;
+
+import modelo.DatosProfesores;
+import modelo.DatosMateriales;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 public class RealizaPrestamo extends JPanel {
 
+	private Calendar c;
+	private JComboBox boxProfes, boxMatdisp;
+	private JLabel lblNomProfesor, lblMatDisp,lblInicioPrstamo,lblFinPrstamo,lblFormulario, fondo;
+	private JDateChooser chooserDiaInicio, chooseriaFin;
+	private JButton btnReserva;
+	private DatosProfesores profLista= new DatosProfesores();
+	private DatosMateriales matdat= new DatosMateriales();
 	/**
 	 * Create the panel.
 	 */
 	public RealizaPrestamo() {
+		setBackground(SystemColor.textHighlightText);
 		setForeground(Color.WHITE);
 		setLayout(null);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(67, 288, 256, 20);
-		add(comboBox);
+		lblNomProfesor = new JLabel("Profesor/a:");
+		lblNomProfesor.setFont(new Font("Tempus Sans ITC", Font.BOLD, 26));
+		lblNomProfesor.setBounds(67, 173, 161, 31);
+		this.add(lblNomProfesor);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(67, 215, 256, 20);
-		add(comboBox_1);
+		boxProfes = new JComboBox();
+		Iterator<String> recorredor1=profLista.getProfesores().iterator();
+		while (recorredor1.hasNext()){
+			boxProfes.addItem(recorredor1.next().toString()); 
+		}
+		boxProfes.setBounds(67, 215, 266, 20);
+		this.add(boxProfes);
 		
-		JLabel lblNomProfesor = new JLabel("Profesor/a:");
-		lblNomProfesor.setFont(new Font("Calibri", Font.BOLD, 26));
-		lblNomProfesor.setBounds(67, 173, 131, 31);
-		add(lblNomProfesor);
+		lblMatDisp = new JLabel("Materiales disponibles:");
+		lblMatDisp.setFont(new Font("Tempus Sans ITC", Font.BOLD, 26));
+		lblMatDisp.setBounds(67, 246, 290, 31);
+		this.add(lblMatDisp);
 		
-		JLabel lblMatDisp = new JLabel("Materiales disponibles:");
-		lblMatDisp.setFont(new Font("Calibri", Font.BOLD, 26));
-		lblMatDisp.setBounds(67, 246, 256, 31);
-		add(lblMatDisp);
+		boxMatdisp = new JComboBox();
+		Iterator<String> recorredor=matdat.getMaterialDisp().iterator();
+		while (recorredor.hasNext()){
+			boxMatdisp.addItem(recorredor.next().toString()); 
+		}
+		boxMatdisp.setBounds(67, 288, 266, 20);
+		this.add(boxMatdisp);
 		
-		JLabel fondo = new JLabel("");
-		fondo.setIcon(new ImageIcon(RealizaPrestamo.class.getResource("/imagenes/prestamo.png")));
-		fondo.setBounds(357, 197, 438, 405);
-		add(fondo);
 		
-		JDateChooser dateChooser = new JDateChooser();
-		dateChooser.setBounds(67, 368, 161, 20);
-		add(dateChooser);
+		lblInicioPrstamo = new JLabel("Inicio Pr\u00E9stamo:");
+		lblInicioPrstamo.setFont(new Font("Tempus Sans ITC", Font.BOLD, 26));
+		lblInicioPrstamo.setBounds(67, 326, 201, 31);
+		this.add(lblInicioPrstamo);	
 		
-		JDateChooser dateChooser_1 = new JDateChooser();
-		dateChooser_1.setBounds(67, 452, 161, 20);
-		add(dateChooser_1);
+		c= new GregorianCalendar();
+		chooserDiaInicio = new JDateChooser();
+		chooserDiaInicio.setDateFormatString("yyyy-MMMM-dd");
+		chooserDiaInicio.setBounds(67, 368, 161, 20);
+		this.add(chooserDiaInicio);
+		chooserDiaInicio.setCalendar(c); 
 		
-		JLabel lblInicioPrstamo = new JLabel("Inicio Pr\u00E9stamo:");
-		lblInicioPrstamo.setFont(new Font("Calibri", Font.BOLD, 26));
-		lblInicioPrstamo.setBounds(67, 326, 188, 31);
-		add(lblInicioPrstamo);
+		lblFinPrstamo = new JLabel("Fin Pr\u00E9stamo:");
+		lblFinPrstamo.setFont(new Font("Tempus Sans ITC", Font.BOLD, 26));
+		lblFinPrstamo.setBounds(67, 410, 175, 31);
+		this.add(lblFinPrstamo);
 		
-		JLabel lblFinPrstamo = new JLabel("Fin Pr\u00E9stamo:");
-		lblFinPrstamo.setFont(new Font("Calibri", Font.BOLD, 26));
-		lblFinPrstamo.setBounds(67, 410, 155, 31);
-		add(lblFinPrstamo);
+		chooseriaFin = new JDateChooser();
+		chooseriaFin.setDateFormatString("yyyy-MMMM-dd");
+		chooseriaFin.setBounds(67, 452, 161, 20);
+		this.add(chooseriaFin);
 		
-		JButton btnReserva = new JButton("Reservar");
-		btnReserva.setFont(new Font("Calibri", Font.BOLD, 16));
+		btnReserva = new JButton("Reservar");
+		btnReserva.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				matdat.actualizaMaterialPrestado(boxMatdisp.getSelectedItem().toString());
+			}
+		});
+		btnReserva.setFont(new Font("Tempus Sans ITC", Font.BOLD, 16));
 		btnReserva.setBounds(67, 504, 103, 23);
-		add(btnReserva);
+		this.add(btnReserva);
 		
-		JLabel lblNewJgoodiesTitle = DefaultComponentFactory.getInstance().createTitle("Formulario de reserva");
-		lblNewJgoodiesTitle.setFont(new Font("Tempus Sans ITC", Font.BOLD, 30));
-		lblNewJgoodiesTitle.setBounds(239, 46, 322, 40);
-		add(lblNewJgoodiesTitle);
-
+		lblFormulario = DefaultComponentFactory.getInstance().createTitle("Formulario de pr\u00E9stamo");
+		lblFormulario.setForeground(SystemColor.desktop);
+		lblFormulario.setBackground(SystemColor.window);
+		lblFormulario.setHorizontalAlignment(SwingConstants.CENTER);
+		lblFormulario.setBorder(new LineBorder(new Color(0, 0, 0), 5));
+		lblFormulario.setFont(new Font("Tempus Sans ITC", Font.BOLD, 30));
+		lblFormulario.setBounds(103, 46, 593, 92);
+		this.add(lblFormulario);
+		
+		fondo = new JLabel("");
+		fondo.setIcon(new ImageIcon(RealizaPrestamo.class.getResource("/imagenes/prestamo.png")));
+		fondo.setBounds(311, 149, 438, 405);
+		this.add(fondo);
+		
 	}
 }
