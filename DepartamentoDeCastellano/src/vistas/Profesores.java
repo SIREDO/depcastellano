@@ -29,10 +29,11 @@ public class Profesores extends JPanel {
 		setBackground(SystemColor.textHighlightText);
 		setLayout(null);
 		
+		//etiqueta y combobox listado profesores
 		lbMiembros = new JLabel("Miembros del Departamento");
 		lbMiembros.setFont(new Font("Tempus Sans ITC", Font.BOLD, 26));
 		lbMiembros.setBounds(57, 187, 340, 42);
-		add(lbMiembros);
+		this.add(lbMiembros);
 		
 		boxProfes = new JComboBox();
 		boxProfes.setMaximumRowCount(2);
@@ -42,13 +43,12 @@ public class Profesores extends JPanel {
 		}
 		boxProfes.setFont(new Font("Calibri", Font.BOLD, 24));
 		boxProfes.setBounds(94, 240, 260, 36);
-		add(boxProfes);
-		
+		this.add(boxProfes);
 		
 		
 		fondo = new JLabel("");
 		fondo.setIcon(new ImageIcon(Profesores.class.getResource("/imagenes/prestamo.png")));
-		fondo.setBounds(352, 110, 459, 504);
+		fondo.setBounds(311, 149, 438, 405);
 		this.add(fondo);
 		
 

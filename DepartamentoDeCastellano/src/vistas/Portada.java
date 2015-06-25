@@ -38,7 +38,9 @@ public class Portada extends JFrame {
 	
 
 	/**
-	 * Create the frame.
+	 * Frame principal que cargara, mediante un contenedor cardlayout,
+	 *  todas las vistas de la aplicacion, a las cuales se accedera 
+	 *  a traves de una barra de menu .
 	 */
 	public Portada() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Portada.class.getResource("/imagenes/icono2.png")));
@@ -64,6 +66,7 @@ public class Portada extends JFrame {
 		contenedor.add(panel4,"prestar");
 		contenedor.add(panel5,"modifPrestamo");
 		
+		//menubar y sus correspondientes acciones que cargaran la vista seleccionada
 		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		

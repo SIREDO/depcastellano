@@ -53,13 +53,14 @@ public class ListadoMateriales extends JPanel {
 		add(lblDescripcion);
 		
 		textDescripcion = new JTextArea();
+		textDescripcion.setEditable(false);
 		textDescripcion.setBackground(SystemColor.controlHighlight);
 		textDescripcion.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		textDescripcion.setFont(new Font("Arial", Font.BOLD, 14));
 		textDescripcion.setRows(3);
 		textDescripcion.setLineWrap(true);
 		textDescripcion.setWrapStyleWord(true);
-		textDescripcion.setBounds(44, 354, 278, 74);
+		textDescripcion.setBounds(44, 354, 256, 74);
 		add(textDescripcion);
 		textDescripcion.setColumns(10);
 		
@@ -69,11 +70,12 @@ public class ListadoMateriales extends JPanel {
 		add(lblLocalizacin);
 		
 		textLocalizacion = new JTextField();
+		textLocalizacion.setEditable(false);
 		textLocalizacion.setBackground(SystemColor.controlHighlight);
 		textLocalizacion.setHorizontalAlignment(SwingConstants.CENTER);
 		textLocalizacion.setFont(new Font("Arial", Font.BOLD, 14));
 		textLocalizacion.setBorder(new LineBorder(Color.BLACK, 2));
-		textLocalizacion.setBounds(44, 487, 278, 35);
+		textLocalizacion.setBounds(44, 487, 256, 35);
 		add(textLocalizacion);
 		textLocalizacion.setColumns(10);
 		
@@ -109,7 +111,7 @@ public class ListadoMateriales extends JPanel {
 		
 		fondo = new JLabel("");
 		fondo.setIcon(new ImageIcon(ListadoMateriales.class.getResource("/imagenes/prestamo.png")));
-		fondo.setBounds(332, 158, 428, 442);
+		fondo.setBounds(311, 149, 438, 405);
 		add(fondo);
 
 	}

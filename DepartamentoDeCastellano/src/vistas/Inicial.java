@@ -18,30 +18,30 @@ import javax.swing.SwingConstants;
 
 public class Inicial extends JPanel {
 
-	private JLabel lbMiembros, fondo;
+	private JLabel lbltitulo, lblTitulo2, fondo;
 	
-	private DatosProfesores profLista= new DatosProfesores();
 	/**
-	 * Create the panel.
+	 * panel inicial que se muestra por defecto
+	 *  al iniciar la aplicacion.
 	 */
 	public Inicial() {
 		setLayout(null);
 			
-			JLabel lbltitulo = new JLabel("Departamento de Lengua ");
+			lbltitulo = new JLabel("Departamento de Lengua ");
 			lbltitulo.setFont(new Font("Tempus Sans ITC", Font.BOLD, 40));
 			lbltitulo.setBounds(44, 217, 474, 60);
-			add(lbltitulo);
+			this.add(lbltitulo);
 			
-			JLabel lblTitulo2 = new JLabel("castellana y Literatura");
+			lblTitulo2 = new JLabel("castellana y Literatura");
 			lblTitulo2.setHorizontalAlignment(SwingConstants.RIGHT);
 			lblTitulo2.setFont(new Font("Tempus Sans ITC", Font.BOLD, 40));
 			lblTitulo2.setBounds(54, 275, 451, 60);
-			add(lblTitulo2);
+			this.add(lblTitulo2);
 		
 			fondo = new JLabel("");
-		fondo.setIcon(new ImageIcon(Inicial.class.getResource("/imagenes/fondoliso.png")));
-		fondo.setBounds(0, 0, 800, 600);
-		this.add(fondo);
+			fondo.setIcon(new ImageIcon(Inicial.class.getResource("/imagenes/fondoliso.png")));
+			fondo.setBounds(0, 0, 800, 600);
+			this.add(fondo);
 		
 
 	}

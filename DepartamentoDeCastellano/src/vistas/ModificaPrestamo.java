@@ -3,6 +3,7 @@ package vistas;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.SystemColor;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 import javax.swing.ImageIcon;
@@ -17,16 +18,16 @@ import modelo.DatosMateriales;
 import modelo.DatosProfesores;
 
 import com.jgoodies.forms.factories.DefaultComponentFactory;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class ModificaPrestamo extends JPanel {
 
 	
-	private JComboBox boxProfes, boxMatPrest;
-	private JLabel lblNomProfesor, lblMatPrest,lblFormulario, fondo;
+	private JComboBox boxMatPrest;
+	private JLabel lblMatPrest,lblFormulario, fondo;
 	private JButton btnFinaliza;
-	private DatosProfesores profLista= new DatosProfesores();
 	private DatosMateriales matdat= new DatosMateriales();
 	/**
 	 * Create the panel.
@@ -36,45 +37,7 @@ public class ModificaPrestamo extends JPanel {
 		setForeground(Color.WHITE);
 		setLayout(null);
 		
-		lblNomProfesor = new JLabel("Profesor/a:");
-		lblNomProfesor.setFont(new Font("Tempus Sans ITC", Font.BOLD, 26));
-		lblNomProfesor.setBounds(67, 201, 161, 31);
-		this.add(lblNomProfesor);
-		
-		boxProfes = new JComboBox();
-		Iterator<String> recorredor1=profLista.getProfesores().iterator();
-		while (recorredor1.hasNext()){
-			boxProfes.addItem(recorredor1.next().toString()); 
-		}
-		boxProfes.setBounds(67, 254, 266, 20);
-		this.add(boxProfes);
-		
-		lblMatPrest = new JLabel("Materiales prestados:");
-		lblMatPrest.setFont(new Font("Tempus Sans ITC", Font.BOLD, 26));
-		lblMatPrest.setBounds(67, 293, 266, 31);
-		this.add(lblMatPrest);
-		
-		boxMatPrest = new JComboBox();
-		Iterator<String> recorredor=matdat.getNombrePrestado().iterator();
-		while (recorredor.hasNext()){
-			boxMatPrest.addItem(recorredor.next().toString()); 
-		}
-		boxMatPrest.setBounds(67, 346, 266, 20);
-		this.add(boxMatPrest);
-		
-	
-		
-		btnFinaliza = new JButton("Finalizar");
-		btnFinaliza.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				matdat.anulaMaterialPrestado(boxMatPrest.getSelectedItem().toString());
-			}
-		});
-		btnFinaliza.setFont(new Font("Tempus Sans ITC", Font.BOLD, 16));
-		btnFinaliza.setBounds(65, 411, 103, 23);
-		this.add(btnFinaliza);
-		
-		lblFormulario = DefaultComponentFactory.getInstance().createTitle("Finalizar reserva");
+		lblFormulario = DefaultComponentFactory.getInstance().createTitle("Finalizar pr\u00E9stamo");
 		lblFormulario.setForeground(SystemColor.desktop);
 		lblFormulario.setBackground(SystemColor.window);
 		lblFormulario.setHorizontalAlignment(SwingConstants.CENTER);
@@ -82,6 +45,35 @@ public class ModificaPrestamo extends JPanel {
 		lblFormulario.setFont(new Font("Tempus Sans ITC", Font.BOLD, 30));
 		lblFormulario.setBounds(195, 46, 410, 92);
 		this.add(lblFormulario);
+		
+		//etiqueta y combobox que muestra un listado de materiales
+		lblMatPrest = new JLabel("Selecciona Material:");
+		lblMatPrest.setFont(new Font("Tempus Sans ITC", Font.BOLD, 26));
+		lblMatPrest.setBounds(104, 229, 236, 31);
+		this.add(lblMatPrest);
+		
+		boxMatPrest = new JComboBox();
+		Iterator<String> recorredor=matdat.getMaterialPrestado().iterator();
+		while (recorredor.hasNext()){
+			boxMatPrest.addItem(recorredor.next().toString()); 
+		}
+		boxMatPrest.setBounds(28, 295, 312, 20);
+		this.add(boxMatPrest);
+		
+	
+		
+		btnFinaliza = new JButton("Finalizar");
+		btnFinaliza.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String id= matdat.getIdPrest(boxMatPrest.getSelectedItem().toString());
+				matdat.anulaMaterialPrestado(boxMatPrest.getSelectedItem().toString(), id);
+				
+			}
+		});
+		btnFinaliza.setFont(new Font("Tempus Sans ITC", Font.BOLD, 16));
+		btnFinaliza.setBounds(237, 345, 103, 23);
+		this.add(btnFinaliza);
+		
 		
 		fondo = new JLabel("");
 		fondo.setIcon(new ImageIcon(RealizaPrestamo.class.getResource("/imagenes/prestamo.png")));
